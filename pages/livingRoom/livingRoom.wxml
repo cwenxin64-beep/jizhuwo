@@ -1,0 +1,76 @@
+<view class="living-room-page" style="padding-top: {{layout.pageTop}}px;">
+  <view class="top-bar">
+    <view class="back-btn" bindtap="goBack">
+      <image class="back-icon" src="/pages/livingRoom/assets/icon_back.png" mode="aspectFit"></image>
+      <text>返回</text>
+    </view>
+    <view class="title-wrap">
+      <view class="title">客厅陪伴</view>
+      <view class="subtitle">布丁在这里等你</view>
+    </view>
+  </view>
+
+  <view class="scene-card">
+    <image class="scene-bg" src="/pages/livingRoom/assets/bg_livingroom_scene.png" mode="aspectFill"></image>
+
+    <block wx:for="{{hotspots}}" wx:key="id">
+      <view
+        class="hotspot-area hotspot-{{item.id}} {{activeHotspot === item.id ? 'active' : ''}}"
+        style="left: {{item.x}}%; top: {{item.y}}%; width: {{item.w}}%; height: {{item.h}}%;"
+        data-id="{{item.id}}"
+        bindtap="onTapHotspot"
+        bindlongpress="onLongPressHotspot"
+      ></view>
+    </block>
+
+    <image wx:if="{{dogGlow}}" class="dog-glow" src="/pages/livingRoom/assets/hotspot_glow.png" mode="aspectFit"></image>
+
+    <view wx:if="{{petting}}" class="petting-touch">
+      <view class="petting-ring"></view>
+      <text>摸摸</text>
+    </view>
+
+    <image
+      wx:if="{{toyRolling}}"
+      class="toy-roll-layer"
+      src="/pages/livingRoom/assets/toy_ball_overlay.png"
+      mode="aspectFit"
+    ></image>
+
+    <block wx:for="{{hearts}}" wx:key="id">
+      <image
+        class="heart-particle"
+        src="/pages/livingRoom/assets/icon_heart.png"
+        mode="aspectFit"
+        style="left: {{item.x}}%; top: {{item.y}}%; animation-delay: {{item.delay}}ms;"
+      ></image>
+    </block>
+
+    <block wx:for="{{petals}}" wx:key="id">
+      <image
+        class="petal"
+        src="/pages/livingRoom/assets/particle_petal.png"
+        mode="aspectFit"
+        style="left: {{item.x}}%; top: {{item.y}}%; animation-delay: {{item.delay}}ms;"
+      ></image>
+    </block>
+
+    <view wx:if="{{sleeping}}" class="sleep-mark">zzz</view>
+  </view>
+
+  <view class="dialog-wrap">
+    <image class="dialog-bg" src="/pages/livingRoom/assets/dialog_card.png" mode="scaleToFill"></image>
+    <view class="dialog-content">
+      <text class="dialog-text">{{currentText}}</text>
+      <view class="progress-wrap">
+        <view class="progress-line">
+          <view class="progress-fill" style="width: {{progress}}%;"></view>
+          <image class="corgi-head" src="/pages/livingRoom/assets/icon_corgi_head.png" mode="aspectFit" style="left: calc({{progress}}% - 27rpx);"></image>
+        </view>
+      </view>
+      <view class="heart-btn {{heartPulse ? 'pulse' : ''}}" bindtap="onTapHeart">
+        <image src="/pages/livingRoom/assets/icon_heart.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+</view>

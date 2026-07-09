@@ -1,0 +1,62 @@
+<view class="run-page" style="padding-top: {{layout.pageTop}}px; padding-bottom: {{layout.pageBottom}}px;">
+  <view class="run-header">
+    <view class="identity">
+      <view class="avatar-ring">
+        <image class="avatar-face" src="/assets/common/avatar.png" mode="aspectFill"></image>
+      </view>
+      <text class="app-name">请记住我 Recuérdame</text>
+    </view>
+    <view class="heart-button {{heartLit ? 'lit' : ''}}" bindtap="tapHeart" aria-label="收藏跑步记录">♥</view>
+  </view>
+
+  <view class="game-canvas">
+    <view class="flower-bridge"></view>
+
+    <view class="run-stats">
+      <view class="stat-item distance">
+        <text class="stat-label">总路程</text>
+        <text class="stat-value">1,280 m</text>
+      </view>
+      <view class="stat-line"></view>
+      <view class="stat-item pace">
+        <text class="stat-label">配速</text>
+        <text class="stat-value">8.2</text>
+      </view>
+      <view class="stat-line"></view>
+      <view class="stat-item steps">
+        <text class="stat-label">步数</text>
+        <text class="stat-value">180</text>
+      </view>
+    </view>
+
+    <view class="flag-row" aria-hidden="true">
+      <view class="flag pink">♡</view>
+      <view class="flag yellow">⊙</view>
+      <view class="flag orange">⌁</view>
+    </view>
+
+    <view class="runner-hero">
+      <view class="dog-card">
+        <image class="dog-photo" src="/pages/run/assets/dog-source.jpg" mode="aspectFill"></image>
+        <view class="dog-shade"></view>
+      </view>
+      <view class="dog-shadow"></view>
+      <text class="run-title">一起跑步吧</text>
+      <text class="run-subtitle">Run forward together</text>
+    </view>
+
+    <view class="paw-trail" aria-hidden="true">
+      <image src="/pages/run/assets/paw-1.svg" mode="aspectFit"></image>
+      <image src="/pages/run/assets/paw-2.svg" mode="aspectFit"></image>
+      <image src="/pages/run/assets/paw-3.svg" mode="aspectFit"></image>
+    </view>
+
+    <view class="run-controls">
+      <view class="side-control {{activeTool === 'music' ? 'active' : ''}}" data-tool="music" bindtap="chooseTool">音乐</view>
+      <view class="main-control" bindtap="goHome" aria-label="返回小屋">
+        <image src="/pages/run/assets/run-button.svg" mode="aspectFit"></image>
+      </view>
+      <view class="side-control {{activeTool === 'gear' ? 'active' : ''}}" data-tool="gear" bindtap="chooseTool">装备</view>
+    </view>
+  </view>
+</view>

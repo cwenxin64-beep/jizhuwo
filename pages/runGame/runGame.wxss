@@ -1,0 +1,348 @@
+page {
+  background: #130b07;
+}
+
+.run-game-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-right: 22rpx;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  padding-left: 22rpx;
+  overflow: hidden;
+  color: #ffe6b8;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255, 189, 57, 0.18), transparent 28%),
+    radial-gradient(circle at 86% 2%, rgba(38, 78, 112, 0.28), transparent 32%),
+    linear-gradient(180deg, #20130c 0%, #120a06 52%, #0c0704 100%);
+}
+
+.game-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  height: 78rpx;
+}
+
+.game-title,
+.game-subtitle {
+  display: block;
+}
+
+.game-title {
+  color: #ffe0a0;
+  font-size: 34rpx;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.game-subtitle {
+  margin-top: 8rpx;
+  color: rgba(255, 232, 194, 0.58);
+  font-size: 20rpx;
+}
+
+.life-row {
+  display: flex;
+  gap: 6rpx;
+  color: #ffbf4f;
+  font-size: 28rpx;
+}
+
+.score-row {
+  display: grid;
+  flex: none;
+  grid-template-columns: 1fr 1fr 1.6fr;
+  gap: 12rpx;
+  margin: 12rpx 0 16rpx;
+}
+
+.score-pill,
+.guide-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 58rpx;
+  background: rgba(56, 39, 27, 0.84);
+  border: 2rpx solid rgba(255, 194, 55, 0.26);
+  border-radius: 12rpx;
+}
+
+.score-pill {
+  flex-direction: column;
+}
+
+.score-label {
+  color: rgba(255, 232, 194, 0.56);
+  font-size: 17rpx;
+  line-height: 1;
+}
+
+.score-value {
+  margin-top: 5rpx;
+  color: #ffd057;
+  font-size: 25rpx;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.guide-pill {
+  flex-direction: column;
+  gap: 3rpx;
+  color: rgba(255, 232, 194, 0.72);
+  font-size: 18rpx;
+  font-weight: 800;
+  line-height: 20rpx;
+}
+
+.canvas-shell {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #2b4a2d;
+  border: 4rpx solid rgba(255, 203, 90, 0.42);
+  border-radius: 18rpx;
+  box-shadow: 0 20rpx 54rpx rgba(0, 0, 0, 0.38);
+}
+
+.game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.rules-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 34rpx;
+  background: rgba(13, 8, 5, 0.64);
+}
+
+.rules-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600rpx;
+  padding: 34rpx 28rpx 28rpx;
+  color: #ffe6b8;
+  background:
+    linear-gradient(180deg, rgba(65, 42, 27, 0.98), rgba(34, 24, 17, 0.98));
+  border: 3rpx solid #c38b2f;
+  border-radius: 18rpx;
+  box-shadow: 0 28rpx 72rpx rgba(0, 0, 0, 0.48);
+}
+
+.rules-title,
+.rules-subtitle,
+.rule-name,
+.rule-copy,
+.danger-note {
+  display: block;
+}
+
+.rules-title {
+  color: #ffe0a0;
+  font-size: 38rpx;
+  font-weight: 900;
+  text-align: center;
+}
+
+.rules-subtitle {
+  margin-top: 8rpx;
+  color: #ffd057;
+  font-size: 22rpx;
+  font-weight: 800;
+  text-align: center;
+}
+
+.rule-list {
+  display: grid;
+  gap: 14rpx;
+  margin-top: 26rpx;
+}
+
+.rule-item {
+  display: grid;
+  grid-template-columns: 64rpx minmax(0, 1fr);
+  gap: 16rpx;
+  align-items: center;
+  min-height: 84rpx;
+  padding: 10rpx 16rpx;
+  background: rgba(255, 231, 182, 0.06);
+  border: 1rpx solid rgba(255, 205, 91, 0.2);
+  border-radius: 12rpx;
+}
+
+.rule-icon {
+  display: grid;
+  width: 58rpx;
+  height: 58rpx;
+  place-items: center;
+  color: #3b210b;
+  font-size: 34rpx;
+  font-weight: 900;
+  background: #ffd057;
+  border-radius: 10rpx;
+}
+
+.rule-name {
+  color: #ffe6bd;
+  font-size: 24rpx;
+  font-weight: 900;
+}
+
+.rule-copy {
+  margin-top: 4rpx;
+  color: rgba(255, 232, 194, 0.62);
+  font-size: 20rpx;
+}
+
+.reward-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10rpx;
+  margin-top: 18rpx;
+}
+
+.reward-chip {
+  display: flex;
+  height: 76rpx;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(52, 82, 44, 0.54);
+  border: 1rpx solid rgba(255, 205, 91, 0.2);
+  border-radius: 10rpx;
+}
+
+.reward-chip b {
+  color: #ffe3a1;
+  font-size: 20rpx;
+}
+
+.reward-chip text {
+  margin-top: 3rpx;
+  color: #ffba2f;
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.danger-note {
+  margin-top: 18rpx;
+  color: rgba(255, 210, 216, 0.76);
+  font-size: 19rpx;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.start-game-button {
+  display: grid;
+  height: 82rpx;
+  margin-top: 22rpx;
+  place-items: center;
+  color: #321b08;
+  font-size: 26rpx;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffd960, #ffac18);
+  border-radius: 12rpx;
+  box-shadow: 0 12rpx 28rpx rgba(255, 178, 30, 0.26);
+}
+
+.memory-toast {
+  position: absolute;
+  right: 48rpx;
+  bottom: 184rpx;
+  left: 48rpx;
+  z-index: 6;
+  padding: 20rpx 24rpx;
+  color: #3c230c;
+  font-size: 24rpx;
+  font-weight: 800;
+  line-height: 1.45;
+  text-align: center;
+  background: #ffe2a0;
+  border: 4rpx solid #b66f22;
+  border-radius: 14rpx;
+  box-shadow: 0 16rpx 34rpx rgba(0, 0, 0, 0.36);
+}
+
+.game-over-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 42rpx;
+  background: rgba(12, 7, 4, 0.72);
+}
+
+.game-over-card {
+  width: 100%;
+  max-width: 610rpx;
+  padding: 38rpx 30rpx 30rpx;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(72, 44, 27, 0.96), rgba(38, 25, 17, 0.98));
+  border: 4rpx solid #c38b2f;
+  border-radius: 18rpx;
+  box-shadow: 0 28rpx 80rpx rgba(0, 0, 0, 0.48);
+}
+
+.over-title,
+.over-score,
+.over-petals {
+  display: block;
+}
+
+.over-title {
+  color: #ffe0a0;
+  font-size: 42rpx;
+  font-weight: 900;
+}
+
+.over-score {
+  margin-top: 24rpx;
+  color: #ffd057;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.over-petals {
+  margin-top: 12rpx;
+  color: rgba(255, 232, 194, 0.74);
+  font-size: 24rpx;
+}
+
+.over-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18rpx;
+  margin-top: 34rpx;
+}
+
+.over-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 82rpx;
+  color: #ffe6bd;
+  font-size: 25rpx;
+  font-weight: 900;
+  background: rgba(67, 48, 34, 0.92);
+  border: 2rpx solid rgba(255, 205, 91, 0.34);
+  border-radius: 12rpx;
+}
+
+.over-button.primary {
+  color: #321b08;
+  background: linear-gradient(135deg, #ffd960, #ffac18);
+  border-color: #ffd960;
+}

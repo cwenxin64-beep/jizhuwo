@@ -1,0 +1,116 @@
+<view class="bath-game {{quietMode ? 'quiet' : ''}}" style="padding-top: {{layout.pageTop}}px; padding-bottom: {{layout.pageBottom}}px;">
+  <view class="bath-header">
+    <view class="header-button" bindtap="goBack">‹</view>
+    <text class="page-title">洗澡</text>
+    <view class="header-button" bindtap="toggleQuiet">{{quietMode ? '☀' : '☾'}}</view>
+  </view>
+
+  <view class="status-panel">
+    <view class="status-row">
+      <view class="status-chip"><text>步骤</text><b>{{currentStep.label}}</b></view>
+      <view class="status-chip"><text>心情</text><b>{{petMood}}</b></view>
+    </view>
+    <view class="progress-row">
+      <text>清爽度</text>
+      <view class="progress-track"><view class="progress-fill clean" style="width: {{cleanProgress}}%;"></view></view>
+      <b>{{cleanProgress}}%</b>
+    </view>
+    <view class="progress-row">
+      <text>毛毛</text>
+      <view class="progress-track"><view class="progress-fill fluffy" style="width: {{fluffyProgress}}%;"></view></view>
+      <b>{{fluffyProgress}}%</b>
+    </view>
+  </view>
+
+  <view class="bath-scene">
+    <image class="scene-image" src="/pages/bath/assets/bath-scene.png" mode="aspectFill"></image>
+
+    <view class="prompt-card">
+      <view class="prompt-head">
+        <text>🐾 {{currentStep.label}}</text>
+        <text>{{petMood}}</text>
+      </view>
+      <text class="prompt-copy">{{hintMessage}}</text>
+      <view class="step-row">
+        <view wx:for="{{steps}}" wx:key="id" class="step-dot {{index < stepIndex ? 'done' : ''}} {{index === stepIndex ? 'active' : ''}}">
+          <text>•</text>
+        </view>
+      </view>
+    </view>
+
+    <view
+      id="petTarget"
+      class="pet-stage pet-{{petState}} {{petMotion ? 'responding' : ''}}"
+      bindtap="useSelectedTool"
+    >
+      <view class="pet-glow"></view>
+      <image class="pet-image" src="/pages/bath/assets/dog-black-orange.png" mode="aspectFit"></image>
+
+      <view wx:if="{{effectType === 'water' || effectType === 'rinse'}}" class="water-effect">
+        <view wx:for="{{effectParticles}}" wx:key="id" class="water-drop" style="left: {{item.x}}%; top: {{item.y}}%; animation-delay: {{item.delay}}ms;"></view>
+      </view>
+      <view wx:if="{{effectType === 'foam'}}" class="foam-effect">
+        <view wx:for="{{effectParticles}}" wx:key="id" class="foam-bubble" style="left: {{item.x}}%; top: {{item.y}}%; animation-delay: {{item.delay}}ms;"></view>
+      </view>
+      <view wx:if="{{effectType === 'towel'}}" class="towel-effect"></view>
+      <view wx:if="{{effectType === 'dryer'}}" class="dryer-effect">
+        <view class="wind-line one"></view>
+        <view class="wind-line two"></view>
+        <view class="wind-line three"></view>
+      </view>
+      <view wx:if="{{effectType === 'treat' || effectType === 'complete'}}" class="heart-effect">
+        <text>♥</text><text>♥</text><text>♥</text>
+      </view>
+    </view>
+
+    <view wx:if="{{selectedTool}}" class="selected-hint">已拿起：{{selectedTool.label}}，点一下布丁或拖到它身上</view>
+  </view>
+
+  <view class="tool-panel">
+    <text class="tool-guide">把合适的工具拖到布丁身上</text>
+    <scroll-view class="tool-strip" scroll-x="true" show-scrollbar="false">
+      <view class="tool-row">
+        <view
+          wx:for="{{tools}}"
+          wx:key="id"
+          class="tool-button {{selectedToolId === item.id ? 'selected' : ''}} {{item.recommended ? 'recommended' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="selectTool"
+          bindtouchstart="onToolTouchStart"
+          bindtouchmove="onToolTouchMove"
+          bindtouchend="onToolTouchEnd"
+        >
+          <text class="tool-icon">{{item.icon}}</text>
+          <text class="tool-label">{{item.shortLabel || item.label}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view wx:if="{{dragging}}" class="drag-ghost" style="left: {{dragX}}px; top: {{dragY}}px;">
+    <text>{{dragTool.icon}}</text>
+  </view>
+
+  <view wx:if="{{completed}}" class="completion-mask">
+    <view class="completion-card">
+      <text class="completion-title">今日护理小卡</text>
+      <text class="completion-date">{{completionDate}} · 请记住我 Recuérdame</text>
+      <view class="completion-art">
+        <view class="card-moon"></view>
+        <image class="card-dog" src="/pages/bath/assets/dog-black-orange.png" mode="aspectFit"></image>
+        <view class="card-flower one"></view>
+        <view class="card-flower two"></view>
+      </view>
+      <view class="result-line"><text>今日香味</text><b>{{selectedSoap}}</b></view>
+      <view class="result-line"><text>清爽度</text><b>100%</b></view>
+      <view class="result-line"><text>毛毛蓬松度</text><b>100%</b></view>
+      <view class="result-line"><text>狗狗心情</text><b>满足</b></view>
+      <text class="memory-copy">今天布丁洗得香香的，毛毛像被星光晒过一样蓬起来了。</text>
+      <view class="completion-actions">
+        <view class="primary-action" bindtap="saveRecord">{{recordSaved ? '已保存到档案' : '保存到档案'}}</view>
+        <view class="soft-action" bindtap="resetBath">再洗一次</view>
+        <view class="soft-action" bindtap="goHome">回到小屋</view>
+      </view>
+    </view>
+  </view>
+</view>

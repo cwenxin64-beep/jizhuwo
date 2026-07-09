@@ -1,0 +1,84 @@
+<view class="home-page">
+  <view class="home-content" style="top: {{layout.homeTop}}px; bottom: {{layout.homeBottom}}px;">
+    <view class="home-header">
+      <view class="home-brand">
+        <view class="avatar-ring"><image class="avatar-face" src="/assets/common/avatar.png" mode="aspectFill"></image></view>
+        <text class="home-title">请记住我 Recuérdame</text>
+      </view>
+      <view class="heart-chip">♥</view>
+    </view>
+
+    <view class="metric-card">
+      <view class="metric-item">
+        <text class="metric-label">陪伴值</text>
+        <text class="metric-value">2,480</text>
+      </view>
+      <view class="metric-item">
+        <text class="metric-label">摇尾频</text>
+        <text class="metric-value">85%</text>
+      </view>
+      <view class="metric-item hunger">
+        <text class="metric-label">饱腹感</text>
+        <view class="hunger-bar"><view></view></view>
+      </view>
+      <view class="metric-item">
+        <text class="metric-label">毛发度</text>
+        <text class="metric-value small">蓬松</text>
+      </view>
+      <view class="metric-item">
+        <text class="metric-label">步数</text>
+        <text class="metric-value">3,4k</text>
+      </view>
+    </view>
+
+    <view class="scene-wrap">
+      <image class="home-shot" src="/assets/home/home-room-scene.jpg" mode="aspectFill"></image>
+      <view wx:if="{{tapEffect}}" class="touch-ripple {{tapEffect}}"></view>
+
+      <view class="tap room kitchen-zone" bindtap="goCook"></view>
+      <view class="tap room bath-zone" bindtap="goBath"></view>
+      <view class="tap room living-zone" bindtap="goLiving"></view>
+      <view class="tap door-walk-zone" bindtap="goWalk"></view>
+
+      <view class="scene-guide guide-cook" bindtap="goCook" aria-label="进入厨房">
+        <view class="guide-halo">
+          <image class="guide-icon cook-icon" src="/assets/home/guide-cook.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <view class="scene-guide guide-bath" bindtap="goBath" aria-label="进入浴室">
+        <view class="guide-halo">
+          <image class="guide-icon bath-icon" src="/assets/home/guide-bath.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <view class="scene-guide guide-living" bindtap="goLiving" aria-label="进入客厅">
+        <view class="guide-halo">
+          <image class="guide-icon living-icon" src="/assets/home/guide-living.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <view class="scene-guide guide-walk" bindtap="goWalk" aria-label="出门遛狗">
+        <view class="guide-halo">
+          <image class="guide-icon walk-icon" src="/assets/home/guide-walk.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="home-tabbar">
+      <view class="home-tab-item active">
+        <image class="tab-icon" src="/assets/navigation/home-active.svg" mode="aspectFit"></image>
+        <text>陪伴</text>
+      </view>
+      <view class="home-tab-item" bindtap="goAlbum">
+        <image class="tab-icon" src="/assets/navigation/album.svg" mode="aspectFit"></image>
+        <text>档案</text>
+      </view>
+      <view class="home-tab-item" bindtap="goMarket">
+        <image class="tab-icon" src="/assets/navigation/market.svg" mode="aspectFit"></image>
+        <text>集市</text>
+      </view>
+      <view class="home-tab-item" bindtap="goProfile">
+        <image class="tab-icon" src="/assets/navigation/profile.svg" mode="aspectFit"></image>
+        <text>我的</text>
+      </view>
+    </view>
+  </view>
+</view>

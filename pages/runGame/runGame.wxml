@@ -1,0 +1,85 @@
+<view class="run-game-page" style="padding-top: {{layout.pageTop}}px;">
+  <view class="game-head">
+    <view>
+      <text class="game-title">花桥小径</text>
+      <text class="game-subtitle">灵感漂流</text>
+    </view>
+    <view class="life-row">
+      <text wx:for="{{lives}}" wx:key="*this">♥</text>
+    </view>
+  </view>
+
+  <view class="score-row">
+    <view class="score-pill">
+      <text class="score-label">得分</text>
+      <text class="score-value">{{score}}</text>
+    </view>
+    <view class="score-pill">
+      <text class="score-label">花瓣</text>
+      <text class="score-value">{{petals}}</text>
+    </view>
+    <view class="guide-pill">
+      <text>滑动换道</text>
+      <text>点击 / 上滑跳跃</text>
+    </view>
+  </view>
+
+  <view class="canvas-shell">
+    <canvas
+      id="runGameCanvas"
+      class="game-canvas"
+      type="2d"
+      disable-scroll="true"
+      bindtouchstart="onTouchStart"
+      bindtouchend="onTouchEnd"
+      bindtap="jump"
+    ></canvas>
+
+    <view wx:if="{{tutorialVisible}}" class="rules-mask">
+      <view class="rules-card">
+        <text class="rules-title">跑前小提示</text>
+        <text class="rules-subtitle">三条跑道 · 三次机会</text>
+
+        <view class="rule-list">
+          <view class="rule-item">
+            <text class="rule-icon">↔</text>
+            <view>
+              <text class="rule-name">左右滑动换道</text>
+              <text class="rule-copy">避开石头和木栏</text>
+            </view>
+          </view>
+          <view class="rule-item">
+            <text class="rule-icon">↑</text>
+            <view>
+              <text class="rule-name">点击或上滑跳跃</text>
+              <text class="rule-copy">可以越过水坑和落叶堆</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="reward-row">
+          <view class="reward-chip"><b>花瓣</b><text>+12</text></view>
+          <view class="reward-chip"><b>骨头</b><text>+28</text></view>
+          <view class="reward-chip"><b>回忆</b><text>+60</text></view>
+        </view>
+
+        <text class="danger-note">撞到障碍会失去 1 颗心，心用完游戏结束</text>
+        <view class="start-game-button" bindtap="startGame">开始奔跑</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{memoryText}}" class="memory-toast">{{memoryText}}</view>
+
+  <view wx:if="{{gameOver}}" class="game-over-mask">
+    <view class="game-over-card">
+      <text class="over-title">小径暂歇</text>
+      <text class="over-score">得分 {{score}}</text>
+      <text class="over-petals">收集花瓣 {{petals}} 枚</text>
+      <view class="over-actions">
+        <view class="over-button primary" bindtap="restartGame">再来一次</view>
+        <view class="over-button" bindtap="goHome">返回小屋</view>
+      </view>
+    </view>
+  </view>
+</view>

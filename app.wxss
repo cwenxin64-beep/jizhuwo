@@ -1,0 +1,305 @@
+page {
+  min-height: 100vh;
+  color: #fff3df;
+  background: #100a09;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+view,
+text,
+button {
+  box-sizing: border-box;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  text-align: center;
+  white-space: normal;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  line-height: 1;
+  overflow: visible;
+  appearance: none;
+}
+
+button::after {
+  border: 0;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 64rpx 28rpx 148rpx;
+  background:
+    radial-gradient(circle at 8% 6%, rgba(255, 183, 52, 0.22), transparent 28%),
+    radial-gradient(circle at 94% 0%, rgba(40, 167, 174, 0.18), transparent 30%),
+    linear-gradient(180deg, #21110e 0%, #100a09 56%, #0b0706 100%);
+}
+
+.page.light {
+  color: #3b2418;
+  background:
+    radial-gradient(circle at 12% 4%, rgba(255, 189, 56, 0.26), transparent 28%),
+    radial-gradient(circle at 95% 3%, rgba(26, 150, 155, 0.16), transparent 34%),
+    linear-gradient(180deg, #fff3db 0%, #ffe5c2 48%, #fff9ef 100%);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72rpx;
+  margin-bottom: 28rpx;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  min-width: 0;
+}
+
+.brand-mark {
+  display: grid;
+  width: 56rpx;
+  height: 56rpx;
+  place-items: center;
+  color: #2b180d;
+  font-size: 28rpx;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffcf54, #ff8b2f);
+  border-radius: 18rpx;
+  box-shadow: 0 10rpx 24rpx rgba(255, 161, 43, 0.28);
+}
+
+.brand-title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.brand-subtitle {
+  display: block;
+  margin-top: 4rpx;
+  color: rgba(255, 243, 223, 0.66);
+  font-size: 22rpx;
+}
+
+.light .brand-subtitle {
+  color: rgba(88, 55, 32, 0.62);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54rpx;
+  padding: 0 22rpx;
+  color: #ffcf68;
+  font-size: 22rpx;
+  white-space: nowrap;
+  background: rgba(255, 186, 61, 0.12);
+  border: 1rpx solid rgba(255, 202, 91, 0.26);
+  border-radius: 999rpx;
+}
+
+.light .pill {
+  color: #8b4d0f;
+  background: rgba(255, 202, 91, 0.28);
+  border-color: rgba(181, 102, 22, 0.16);
+}
+
+.section {
+  margin-top: 30rpx;
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-bottom: 18rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.section-note {
+  color: rgba(255, 243, 223, 0.58);
+  font-size: 22rpx;
+}
+
+.light .section-note {
+  color: rgba(71, 43, 27, 0.54);
+}
+
+.card {
+  overflow: hidden;
+  background: rgba(54, 31, 24, 0.88);
+  border: 1rpx solid rgba(255, 199, 105, 0.18);
+  border-radius: 28rpx;
+  box-shadow: 0 18rpx 48rpx rgba(0, 0, 0, 0.22);
+}
+
+.light .card {
+  background: rgba(255, 250, 240, 0.86);
+  border-color: rgba(187, 103, 31, 0.13);
+  box-shadow: 0 18rpx 42rpx rgba(181, 97, 28, 0.12);
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 92rpx;
+  padding: 0 34rpx;
+  color: #2b180d;
+  font-size: 30rpx;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffd75c, #ff9c2f);
+  border-radius: 999rpx;
+  box-shadow: 0 16rpx 34rpx rgba(255, 151, 34, 0.32);
+}
+
+.ghost-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 76rpx;
+  padding: 0 26rpx;
+  color: #ffcf68;
+  font-size: 26rpx;
+  font-weight: 700;
+  background: rgba(255, 201, 91, 0.1);
+  border: 1rpx solid rgba(255, 201, 91, 0.28);
+  border-radius: 999rpx;
+}
+
+.light .ghost-button {
+  color: #8c520e;
+  background: rgba(255, 199, 91, 0.22);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42rpx;
+  padding: 0 14rpx;
+  color: #ffc65d;
+  font-size: 20rpx;
+  background: rgba(255, 195, 78, 0.12);
+  border-radius: 999rpx;
+}
+
+.light .tag {
+  color: #9b5913;
+  background: rgba(255, 195, 78, 0.26);
+}
+
+.two-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18rpx;
+}
+
+.marigold-divider {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin: 22rpx 0;
+  color: #ffc65d;
+  font-size: 22rpx;
+}
+
+.marigold-divider::before,
+.marigold-divider::after {
+  flex: 1;
+  height: 1rpx;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 198, 93, 0.42), transparent);
+}
+
+.empty-space {
+  height: 24rpx;
+}
+
+.shot-page {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #100a09;
+}
+
+.shot-stage {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background: #100a09;
+}
+
+.page-shot {
+  display: block;
+  width: 100vw;
+}
+
+.fixed-shot .shot-stage {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.fixed-shot .page-shot {
+  height: 100vh;
+}
+
+.tap {
+  position: absolute;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.tap::after {
+  border: 0;
+}
+
+.bottom-tab {
+  bottom: 0;
+  height: 126rpx;
+}
+
+.tab-home {
+  left: 0;
+  width: 25vw;
+}
+
+.tab-album {
+  left: 25vw;
+  width: 25vw;
+}
+
+.tab-market {
+  left: 50vw;
+  width: 25vw;
+}
+
+.tab-profile {
+  left: 75vw;
+  width: 25vw;
+}
+
+.back-zone {
+  top: 26rpx;
+  left: 20rpx;
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 50%;
+}

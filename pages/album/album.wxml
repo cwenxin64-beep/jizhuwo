@@ -1,0 +1,55 @@
+<view class="album-page">
+  <view class="album-inner" style="padding-top: {{layout.pageTop}}px; padding-bottom: {{layout.tabPageBottom}}px;">
+    <view class="album-header">
+      <view class="identity">
+        <view class="avatar-ring"><image class="avatar-face" src="/assets/common/avatar.png" mode="aspectFill"></image></view>
+        <text class="app-name">请记住我 Recuérdame</text>
+      </view>
+      <view class="heart-button" bindtap="goLab">★</view>
+    </view>
+
+    <view class="hero-memory">
+      <view class="year-badge">年度精选 · 2026</view>
+      <view class="star-button" bindtap="goLab">★</view>
+      <text class="memory-title-main">布丁的金色瞬间</text>
+      <view class="dog-photo">
+        <image class="hero-photo" src="/assets/album/hero.jpg" mode="aspectFill"></image>
+        <view class="photo-shade"></view>
+      </view>
+      <text class="photo-count">守护连接 421 天</text>
+      <text class="memory-copy">“在这平凡的一年里，布丁用摇晃的尾巴为我的世界涂满了色彩。每一次清晨的呼唤，都是最温暖的来信。”</text>
+    </view>
+
+    <view class="filter-row">
+      <view
+        wx:for="{{filters}}"
+        wx:key="*this"
+        class="filter-button {{activeFilter === item ? 'active' : ''}}"
+        data-name="{{item}}"
+        bindtap="chooseFilter"
+      >
+        <text>{{item}}</text>
+      </view>
+    </view>
+
+    <view class="memory-grid">
+      <view wx:for="{{visibleMemories}}" wx:key="title" class="memory-card" data-index="{{index}}" bindtap="openMemory">
+        <view class="memory-image {{item.tone}}">
+          <image class="memory-photo" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="small-badge {{item.badge}}"></view>
+        </view>
+        <text class="memory-tag">{{item.tag}}</text>
+        <text class="memory-card-title">{{item.title}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{selectedMemory}}" class="memory-detail">
+      <view class="detail-head">
+        <text>{{selectedMemory.title}}</text>
+        <view bindtap="closeMemory">×</view>
+      </view>
+      <text class="detail-tag">{{selectedMemory.tag}}</text>
+      <text class="detail-copy">{{selectedMemory.copy}}</text>
+    </view>
+  </view>
+</view>

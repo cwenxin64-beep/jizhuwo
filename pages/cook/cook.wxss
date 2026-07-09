@@ -1,0 +1,274 @@
+page {
+  background: #160d08;
+}
+
+.cook-game-page {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: #fff0c5;
+  background: #160d08;
+}
+
+.game-header {
+  display: grid;
+  flex: none;
+  grid-template-columns: 72rpx 1fr 112rpx;
+  align-items: center;
+  min-height: 92rpx;
+  padding: 0 22rpx;
+  background: #2a1708;
+  border-bottom: 1rpx solid rgba(255, 205, 87, 0.18);
+}
+
+.header-button {
+  display: grid;
+  width: 62rpx;
+  height: 62rpx;
+  place-items: center;
+  color: #ffd45f;
+  font-size: 44rpx;
+  background: rgba(255, 212, 95, 0.1);
+  border-radius: 50%;
+}
+
+.title-group {
+  min-width: 0;
+  text-align: center;
+}
+
+.page-title,
+.page-subtitle {
+  display: block;
+}
+
+.page-title {
+  color: #ffd45f;
+  font-size: 32rpx;
+  font-weight: 900;
+}
+
+.page-subtitle {
+  margin-top: 4rpx;
+  color: rgba(255, 240, 197, 0.6);
+  font-size: 18rpx;
+}
+
+.score-box {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+
+.score-number {
+  color: #ffd45f;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.score-unit {
+  margin-left: 4rpx;
+  color: rgba(255, 240, 197, 0.54);
+  font-size: 18rpx;
+}
+
+.food-guide {
+  display: grid;
+  flex: none;
+  grid-template-columns: 1fr 1rpx 0.7fr;
+  gap: 16rpx;
+  align-items: center;
+  min-height: 104rpx;
+  padding: 12rpx 24rpx;
+  background: #25170f;
+  border-bottom: 1rpx solid rgba(255, 205, 87, 0.14);
+}
+
+.guide-group {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.guide-label {
+  flex: none;
+  padding: 7rpx 10rpx;
+  font-size: 18rpx;
+  font-weight: 900;
+  border-radius: 8rpx;
+}
+
+.guide-label.safe {
+  color: #102e22;
+  background: #7dd39a;
+}
+
+.guide-label.danger {
+  color: #4a160e;
+  background: #ff977f;
+}
+
+.guide-icons {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.guide-icons image {
+  width: 42rpx;
+  height: 42rpx;
+  image-rendering: pixelated;
+}
+
+.guide-divider {
+  width: 1rpx;
+  height: 54rpx;
+  background: rgba(255, 240, 197, 0.14);
+}
+
+.danger-group {
+  justify-content: flex-end;
+}
+
+.canvas-shell {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #78a7bd;
+}
+
+.game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-hud {
+  position: absolute;
+  top: 18rpx;
+  right: 18rpx;
+  left: 18rpx;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.meal-count,
+.feedback {
+  padding: 10rpx 16rpx;
+  color: #fff0c5;
+  font-size: 20rpx;
+  font-weight: 900;
+  background: rgba(42, 23, 8, 0.82);
+  border: 1rpx solid rgba(255, 212, 95, 0.28);
+  border-radius: 10rpx;
+}
+
+.feedback {
+  max-width: 390rpx;
+  color: #ffd45f;
+  text-align: right;
+}
+
+.jump-button {
+  position: absolute;
+  right: 28rpx;
+  bottom: 28rpx;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 104rpx;
+  height: 104rpx;
+  color: #3c2109;
+  font-size: 22rpx;
+  font-weight: 900;
+  background: #ffd45f;
+  border: 4rpx solid #fff0c5;
+  border-radius: 50%;
+  box-shadow: 0 10rpx 24rpx rgba(70, 34, 9, 0.32);
+}
+
+.jump-icon {
+  font-size: 34rpx;
+  line-height: 0.9;
+}
+
+.state-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 34rpx;
+  background: rgba(20, 11, 6, 0.68);
+}
+
+.state-card {
+  width: 100%;
+  max-width: 560rpx;
+  padding: 30rpx;
+  text-align: center;
+  background: #352115;
+  border: 2rpx solid #c99131;
+  border-radius: 16rpx;
+  box-shadow: 0 24rpx 60rpx rgba(0, 0, 0, 0.42);
+}
+
+.state-title,
+.state-copy,
+.result-score {
+  display: block;
+}
+
+.state-title {
+  color: #ffd45f;
+  font-size: 38rpx;
+  font-weight: 900;
+}
+
+.result-score {
+  margin-top: 16rpx;
+  color: #fff0c5;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.state-copy {
+  margin: 16rpx auto 24rpx;
+  color: rgba(255, 240, 197, 0.72);
+  font-size: 22rpx;
+  line-height: 1.55;
+}
+
+.state-action {
+  display: grid;
+  height: 76rpx;
+  margin-top: 14rpx;
+  place-items: center;
+  color: #fff0c5;
+  font-size: 24rpx;
+  font-weight: 900;
+  background: rgba(255, 240, 197, 0.08);
+  border: 1rpx solid rgba(255, 212, 95, 0.28);
+  border-radius: 12rpx;
+}
+
+.state-action.primary {
+  color: #3c2109;
+  background: #ffd45f;
+  border-color: #ffd45f;
+}

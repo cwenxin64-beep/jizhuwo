@@ -1,0 +1,60 @@
+<view class="lab-page" style="padding-top: {{layout.pageTop}}px; padding-bottom: {{layout.pageBottom}}px;">
+  <view class="lab-header">
+    <button class="back" bindtap="goBack">‹</button>
+    <text class="lab-title">形象实验室</text>
+  </view>
+
+  <view class="upload-box {{photoPath ? 'has-photo' : ''}}" bindtap="choosePhoto">
+    <image wx:if="{{photoPath}}" class="upload-image" src="{{photoPath}}" mode="aspectFill"></image>
+    <view wx:else class="camera-icon"></view>
+    <text class="upload-title">{{uploadTitle}}</text>
+    <text class="upload-note">{{uploadNote}}</text>
+  </view>
+
+  <view class="source-card">
+    <view class="source-avatar">
+      <image wx:if="{{photoPath}}" class="source-photo" src="{{photoPath}}" mode="aspectFill"></image>
+      <view wx:else class="source-dog"></view>
+    </view>
+    <text class="source-label">{{photoPath ? '当前照片：等待星光转换' : '示例：温暖星光转换'}}</text>
+    <view class="source-medal">✦</view>
+  </view>
+
+  <view class="style-section">
+    <view class="section-title-row">
+      <text class="link-icon">◎</text>
+      <text>艺术风格选择</text>
+    </view>
+    <view class="style-row">
+      <view
+        wx:for="{{styles}}"
+        wx:key="title"
+        class="style-card {{item.active ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="chooseStyle"
+      >
+        <view class="style-preview {{item.tone}}"></view>
+        <text>{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="hint-card">
+    <text>温馨提示：请尽量选择光线清晰、露出正脸的照片，以便捕捉它的灵动神态。</text>
+  </view>
+
+  <view wx:if="{{resultVisible}}" class="result-card">
+    <image class="result-preview result-image" src="{{resultImage}}" mode="aspectFill" bindtap="previewResult"></image>
+    <view>
+      <text class="result-title">{{resultTitle}}</text>
+      <text class="result-copy">{{resultCopy}}</text>
+      <text class="result-preview-note" bindtap="previewResult">点击查看大图</text>
+    </view>
+  </view>
+
+  <button
+    class="generate-button {{generating ? 'loading' : ''}}"
+    disabled="{{generating}}"
+    bindtap="createImage"
+  >{{generateText}}</button>
+</view>

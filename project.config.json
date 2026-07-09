@@ -1,0 +1,73 @@
+{
+  "appid": "wx9bc2587f3fa31d5f",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "./",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "projectname": "recuerdame-miniprogram",
+  "description": "请记住我 Recuérdame 微信小程序原型",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": false,
+    "newFeature": true,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "simulatorPluginLibVersion": {},
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "folder",
+        "value": "assets/cook"
+      },
+      {
+        "type": "folder",
+        "value": "starter_pages"
+      },
+      {
+        "type": "folder",
+        "value": "assets/bath"
+      },
+      {
+        "type": "folder",
+        "value": "assets/livingroom"
+      },
+      {
+        "type": "folder",
+        "value": "images"
+      },
+      {
+        "type": "suffix",
+        "value": ".tmp.png"
+      },
+      {
+        "type": "suffix",
+        "value": "-source.png"
+      },
+      {
+        "type": "suffix",
+        "value": ".md"
+      }
+    ],
+    "include": []
+  },
+  "editorSetting": {}
+}

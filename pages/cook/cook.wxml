@@ -1,0 +1,74 @@
+<view class="cook-game-page" style="padding-top: {{layout.pageTop}}px; padding-bottom: {{layout.pageBottom}}px;">
+  <view class="game-header">
+    <view class="header-button" bindtap="goBack">‹</view>
+    <view class="title-group">
+      <text class="page-title">布丁开饭啦</text>
+      <text class="page-subtitle">挑对食物，吃得香香</text>
+    </view>
+    <view class="score-box">
+      <text class="score-number">{{score}}</text>
+      <text class="score-unit">/ {{targetScore}}</text>
+    </view>
+  </view>
+
+  <view class="food-guide">
+    <view class="guide-group">
+      <text class="guide-label safe">可以吃</text>
+      <view class="guide-icons">
+        <image src="/pages/cook/assets/vegetable.png" mode="aspectFit"></image>
+        <image src="/pages/cook/assets/meat.png" mode="aspectFit"></image>
+        <image src="/pages/cook/assets/fish.png" mode="aspectFit"></image>
+        <image src="/pages/cook/assets/fruit.png" mode="aspectFit"></image>
+      </view>
+    </view>
+    <view class="guide-divider"></view>
+    <view class="guide-group danger-group">
+      <text class="guide-label danger">要避开</text>
+      <view class="guide-icons">
+        <image src="/pages/cook/assets/desert.png" mode="aspectFit"></image>
+        <image src="/pages/cook/assets/nuts.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="canvas-shell">
+    <canvas
+      id="cookGameCanvas"
+      class="game-canvas"
+      type="2d"
+      disable-scroll="true"
+      bindtap="jump"
+      bindtouchstart="onCanvasTouchStart"
+      bindtouchend="onCanvasTouchEnd"
+    ></canvas>
+
+    <view class="canvas-hud">
+      <view class="meal-count">吃到 {{safeFoodCount}} 份</view>
+      <view wx:if="{{feedbackText}}" class="feedback">{{feedbackText}}</view>
+    </view>
+
+    <view wx:if="{{gameState === 'ready'}}" class="state-mask">
+      <view class="state-card">
+        <text class="state-title">准备开饭</text>
+        <text class="state-copy">点击屏幕或上滑跳跃，吃到安全食物，避开冰淇淋、巧克力和木箱。</text>
+        <view class="state-action primary" catchtap="startGame">开始游戏</view>
+        <view class="state-action" catchtap="goHome">回到小屋</view>
+      </view>
+    </view>
+
+    <view wx:if="{{gameState === 'over' || gameState === 'win' || gameState === 'error'}}" class="state-mask">
+      <view class="state-card">
+        <text class="state-title">{{resultTitle}}</text>
+        <text class="result-score">得分 {{score}}</text>
+        <text class="state-copy">{{resultMessage}}</text>
+        <view wx:if="{{gameState !== 'error'}}" class="state-action primary" catchtap="restartGame">再来一次</view>
+        <view class="state-action" catchtap="goHome">返回小屋</view>
+      </view>
+    </view>
+
+    <view wx:if="{{gameState === 'playing'}}" class="jump-button" catchtap="jump">
+      <text class="jump-icon">↑</text>
+      <text>跳</text>
+    </view>
+  </view>
+</view>

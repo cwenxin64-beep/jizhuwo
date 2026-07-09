@@ -1,0 +1,59 @@
+<view class="profile-page">
+  <view class="profile-inner" style="padding-top: {{layout.pageTop}}px; padding-bottom: {{layout.tabPageBottom}}px;">
+    <view class="profile-header">
+      <view class="identity">
+        <view class="avatar-ring"><image class="avatar-face" src="/assets/common/avatar.png" mode="aspectFill"></image></view>
+        <text class="app-name">请记住我 Recuérdame</text>
+      </view>
+      <button class="heart-button {{heartLit ? 'lit' : ''}}" bindtap="tapHeart">♥</button>
+    </view>
+
+    <view class="person-card">
+      <view class="portrait"><view class="portrait-glow"></view></view>
+      <text class="person-name">守望者的静谧角落</text>
+      <text class="person-note">情感连接已守护 365 天</text>
+    </view>
+
+    <view class="pet-file" bindtap="openPetFile">
+      <view class="file-icon">♣</view>
+      <view>
+        <text class="file-title">萌宠档案</text>
+        <text class="file-desc">管理 2 位已在花桥的小伙伴</text>
+      </view>
+      <text class="arrow">›</text>
+    </view>
+
+    <view class="switch-grid">
+      <view class="switch-card" data-key="warmMode" bindtap="toggleSwitch">
+        <text class="switch-title">温暖模式</text>
+        <text class="switch-desc">针对情绪波动的轻盈界面</text>
+        <view class="switch {{warmMode ? 'on' : ''}}"><view></view></view>
+      </view>
+      <view class="switch-card" data-key="memoryReminder" bindtap="toggleSwitch">
+        <text class="switch-title">纪念提醒</text>
+        <text class="switch-desc">重要时间温柔通知</text>
+        <view class="switch {{memoryReminder ? 'on' : ''}}"><view></view></view>
+      </view>
+    </view>
+
+    <view class="menu-title-small">系统与隐私</view>
+    <view class="menu-list">
+      <view wx:for="{{menu}}" wx:key="title" class="menu-item" data-index="{{index}}" bindtap="openMenu">
+        <view>
+          <text class="menu-title">{{item.title}}</text>
+          <text class="menu-desc">{{item.desc}}</text>
+        </view>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+
+    <view wx:if="{{panelVisible}}" class="profile-panel">
+      <view class="panel-head">
+        <text>{{panelTitle}}</text>
+        <view bindtap="closePanel">×</view>
+      </view>
+      <text class="panel-copy">{{panelCopy}}</text>
+      <view wx:for="{{panelItems}}" wx:key="*this" class="panel-line">{{item}}</view>
+    </view>
+  </view>
+</view>

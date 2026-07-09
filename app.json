@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/album/album",
+    "pages/market/market",
+    "pages/profile/profile"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/walk",
+      "pages": ["walk"]
+    },
+    {
+      "root": "pages/runGame",
+      "pages": ["runGame"]
+    },
+    {
+      "root": "pages/run",
+      "pages": ["run"]
+    },
+    {
+      "root": "pages/cook",
+      "pages": ["cook"]
+    },
+    {
+      "root": "pages/bath",
+      "pages": ["bath"]
+    },
+    {
+      "root": "pages/livingRoom",
+      "pages": ["livingRoom"]
+    },
+    {
+      "root": "pages/living",
+      "pages": ["living"]
+    },
+    {
+      "root": "pages/lab",
+      "pages": ["lab"]
+    }
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#100a09",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#a98c78",
+    "selectedColor": "#ffbd38",
+    "backgroundColor": "#140d0b",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "陪伴"
+      },
+      {
+        "pagePath": "pages/album/album",
+        "text": "档案"
+      },
+      {
+        "pagePath": "pages/market/market",
+        "text": "集市"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

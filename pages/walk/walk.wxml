@@ -1,0 +1,122 @@
+<view class="depart-shell">
+  <scroll-view class="depart-page" scroll-y="true" enhanced="true" show-scrollbar="false">
+    <view class="depart-inner" style="padding-top: {{layout.pageTop}}px; padding-bottom: {{layout.fakeTabBottom}}px;">
+      <view class="depart-header">
+        <view class="identity">
+          <view class="avatar-ring">
+            <image class="avatar-face" src="/assets/common/avatar.png" mode="aspectFill"></image>
+          </view>
+          <text class="app-name">请记住我 Recuérdame</text>
+        </view>
+        <view class="heart-button {{heartLit ? 'lit' : ''}}" bindtap="tapHeart" aria-label="收藏这次出发">♥</view>
+      </view>
+
+      <view class="hero-panel">
+        <image class="hero-backdrop" src="/pages/walk/assets/hero-backdrop.jpg" mode="aspectFill"></image>
+        <image class="hero-photo" src="/pages/walk/assets/hero.jpg" mode="aspectFill"></image>
+        <view class="paper-flags" aria-hidden="true">
+          <view class="flag pink"></view>
+          <view class="flag yellow"></view>
+          <view class="flag orange"></view>
+        </view>
+        <view class="hero-shade"></view>
+        <view class="hero-copy">
+          <text class="hero-title">准备出发</text>
+          <text class="hero-subtitle">带上思念，去往熟悉的小径</text>
+        </view>
+      </view>
+
+      <view class="prepare-card">
+        <view class="card-title-row">
+          <view class="title-icon travel-title-icon">
+            <image src="/assets/navigation/home-active.svg" mode="aspectFit"></image>
+          </view>
+          <text class="prepare-title">出行方式</text>
+        </view>
+        <view class="mode-grid">
+          <view
+            wx:for="{{travelModes}}"
+            wx:key="title"
+            class="mode-option {{item.active ? 'active' : ''}}"
+            data-index="{{index}}"
+            bindtap="chooseTravelMode"
+          >
+            <image wx:if="{{item.icon === 'paw'}}" class="mode-image-icon" src="/assets/navigation/home-active.svg" mode="aspectFit"></image>
+            <text wx:else class="spark-icon">✦</text>
+            <text class="mode-label">{{item.title}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="exchange-card {{exchangeAnimating ? 'exchanging' : ''}}" bindtap="handleExchangeSteps" aria-label="兑换步数">
+        <view class="card-title-row">
+          <view class="title-icon exchange-title-icon">▥</view>
+          <text class="prepare-title">步数兑换</text>
+          <text class="rate-text">100步 = ¥1</text>
+        </view>
+        <view class="exchange-row">
+          <view class="exchange-box steps-box {{exchangeAnimating ? 'consuming' : ''}} {{stepsInsufficient ? 'insufficient' : ''}}">
+            <text class="exchange-number">{{steps}}</text>
+            <text class="exchange-label">每日步数</text>
+          </view>
+          <view class="exchange-arrow {{exchangeAnimating ? 'flowing' : ''}}" catchtap="handleExchangeSteps">
+            <text>兑换</text>
+            <view class="arrow-line">
+              <view class="arrow-glint"></view>
+            </view>
+          </view>
+          <view class="exchange-box coins-box {{exchangeAnimating ? 'receiving' : ''}}">
+            <text class="exchange-number">¥{{coins}}</text>
+            <text class="exchange-label">金币</text>
+          </view>
+          <view class="particle-layer" aria-hidden="true">
+            <view
+              wx:for="{{flyingParticles}}"
+              wx:key="id"
+              class="coin-particle particle-{{index}}"
+              style="animation-delay: {{item.delay}}ms;"
+            ></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="pack-grid">
+        <view wx:for="{{packs}}" wx:key="title" class="pack-card {{item.type}} {{item.added ? 'added' : ''}}">
+          <view class="pack-title-row">
+            <text class="pack-title-icon">{{item.type === 'bag' ? '▣' : '◉'}}</text>
+            <text>{{item.title}}</text>
+          </view>
+          <view class="pack-image">
+            <image src="{{item.image}}" mode="aspectFill"></image>
+            <view class="image-shade"></view>
+            <view class="add-button" data-index="{{index}}" bindtap="addPack">{{item.added ? '✓' : '+'}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="depart-button" bindtap="startWalk" aria-label="开始出发">
+        <text class="depart-symbol">♢</text>
+        <text>牵好啦，出发</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="fake-tabbar">
+    <view class="fake-tab active" bindtap="goHome">
+      <image class="tab-icon" src="/assets/navigation/home-active.svg" mode="aspectFit"></image>
+      <text>陪伴</text>
+    </view>
+    <view class="fake-tab" bindtap="goAlbum">
+      <image class="tab-icon" src="/assets/navigation/album.svg" mode="aspectFit"></image>
+      <text>档案</text>
+    </view>
+    <view class="fake-tab" bindtap="goMarket">
+      <image class="tab-icon" src="/assets/navigation/market.svg" mode="aspectFit"></image>
+      <text>集市</text>
+    </view>
+    <view class="fake-tab" bindtap="goProfile">
+      <image class="tab-icon" src="/assets/navigation/profile.svg" mode="aspectFit"></image>
+      <text>我的</text>
+    </view>
+  </view>
+</view>

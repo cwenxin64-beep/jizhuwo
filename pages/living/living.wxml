@@ -1,0 +1,36 @@
+<view class="living-page" style="padding-top: {{layout.pageTop}}px; padding-bottom: {{layout.pageBottom}}px;">
+  <view class="nav-bar">
+    <button class="back" bindtap="goBack">‹ 返回</button>
+    <text class="title">客厅互动</text>
+  </view>
+
+  <view class="scene-card living-scene">
+    <view class="window main-window"></view>
+    <view class="fireplace"><view class="flame"></view></view>
+    <view class="bookshelf"></view>
+    <view class="sofa">
+      <view class="pillow one"></view>
+      <view class="pillow two"></view>
+      <view class="pillow three"></view>
+    </view>
+    <view class="tea-table">
+      <view class="lantern"></view>
+      <view class="book"></view>
+      <view class="cup"></view>
+    </view>
+    <view class="side-plant"></view>
+    <view class="floor-glow"></view>
+  </view>
+
+  <view class="status-panel">
+    <text class="status-title">{{statusTitle}}</text>
+    <text class="status-desc">{{statusDesc}}</text>
+  </view>
+
+  <view class="action-grid">
+    <button class="action {{activeAction === 'fire' ? 'active' : ''}}" bindtap="lightFire">点亮壁炉</button>
+    <button class="action {{activeAction === 'story' ? 'active' : ''}}" bindtap="tellStory">讲故事</button>
+    <button class="action {{activeAction === 'rest' ? 'active' : ''}}" bindtap="restTogether">休息</button>
+  </view>
+
+</view>

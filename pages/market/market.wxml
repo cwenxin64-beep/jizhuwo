@@ -1,0 +1,63 @@
+<view class="market-page">
+  <view class="market-inner" style="padding-top: {{layout.pageTop}}px; padding-bottom: {{layout.tabPageBottom}}px;">
+    <view class="market-header">
+      <view class="identity">
+        <view class="avatar-ring"><image class="avatar-face" src="/assets/common/avatar.png" mode="aspectFill"></image></view>
+        <text class="app-name">集市</text>
+      </view>
+      <view class="bag-button" bindtap="toggleWishlist">
+        <text>▢</text>
+        <view wx:if="{{wishCount > 0}}" class="bag-count">{{wishCount}}</view>
+      </view>
+    </view>
+
+    <view class="market-banner">
+      <image class="banner-photo" src="/assets/market/hero.jpg" mode="aspectFill"></image>
+      <view class="banner-shade"></view>
+      <text class="banner-tag">尝鲜区</text>
+      <text class="banner-title">今日灵感：温暖酥酥条</text>
+      <text class="banner-subtitle">给它跨越时间的惊喜</text>
+    </view>
+
+    <view class="category-row">
+      <view
+        wx:for="{{categories}}"
+        wx:key="*this"
+        class="category {{activeCategory === item ? 'active' : ''}}"
+        data-name="{{item}}"
+        bindtap="chooseCategory"
+      >
+        <text>{{item}}</text>
+      </view>
+    </view>
+
+    <view class="goods-grid">
+      <view wx:for="{{visibleGoods}}" wx:key="name" class="goods-card">
+        <view class="goods-image {{item.tone}}">
+          <image class="goods-photo" src="{{item.image}}" mode="aspectFill"></image>
+        </view>
+        <text class="goods-name">{{item.name}}</text>
+        <view class="goods-footer">
+          <view>
+            <text class="goods-price">¥{{item.price}}</text>
+            <text class="goods-old">¥{{item.old}}</text>
+          </view>
+          <view class="add-button {{item.added ? 'added' : ''}}" data-index="{{index}}" bindtap="addCart">{{item.added ? '✓' : '＋'}}</view>
+        </view>
+        <text class="goods-note">{{item.note}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{wishlistOpen}}" class="wishlist-panel">
+    <view class="wishlist-head">
+      <text>心愿单</text>
+      <view bindtap="toggleWishlist">×</view>
+    </view>
+    <view wx:if="{{wishCount === 0}}" class="wishlist-empty">还没有加入商品。</view>
+    <view wx:for="{{wishlist}}" wx:key="name" class="wishlist-item">
+      <text>{{item.name}}</text>
+      <text>¥{{item.price}}</text>
+    </view>
+  </view>
+</view>
